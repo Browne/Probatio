@@ -43,25 +43,25 @@ class Test:
 	    	a.write("*********************************************")	
     	
     def md2():
-    	start = time.clock()
+    	start = time()
     	with open('/usr/share/dict/words', 'r') as f:
     		with open('results/md2', 'r') as w:
         		for word in [line[:-1] for line in f.readlines()]:
         			w.write(word + ", " + md2(word))
         		f.close
-        		elapsed = (time.clock() - start)
+        		elapsed = (clock() - start)
         		average = (elapsed / 285886)
         	w.close	
         a.write("|  md2   | elapsed | average |")
 
     def md5():    
-        start = time.clock()	
+        start = time()	
 		with open('/usr/share/dict/words', 'r') as f:
     		with open('results/md5', 'r') as w:
         		for word in [line[:-1] for line in f.readlines()]:
         			w.write(word + ", " + hashlib.md5(word).hexdigest())
         		f.close
-        		elapsed = (time.clock() - start)
+        		elapsed = (time() - start)
         		average = (elapsed / 285886)
         	w.close	
         a.write("|  md5   | elapsed | average |")
@@ -72,7 +72,7 @@ class Test:
         		for word in [line[:-1] for line in f.readlines()]:
         			w.write(word + ", " + hashlib.sha1(word).hexdigest())
         		f.closer
-        		elapsed = (time.clock() - start)
+        		elapsed = (time() - start)
         		average = (elapsed / 285886)
         	w.close	
         a.write("|  md5   | elapsed | average |")	
@@ -83,7 +83,7 @@ class Test:
         		for word in [line[:-1] for line in f.readlines()]:
         			w.write(word + ", " + hashlib.sha1(word).hexdigest())
         		f.closer
-        		elapsed = (time.clock() - start)
+        		elapsed = (time() - start)
         		average = (elapsed / 285886)
         	w.close	
         a.write("|  md5   | elapsed | average |")	 			
