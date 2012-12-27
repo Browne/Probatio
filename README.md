@@ -2,7 +2,8 @@ Probatio
 ========
 
 A set of benchmark tests against different hashing algorithms, using Python implementations.
- These include:
+These include:
+
 1. md2
 + md5
 + sha1
