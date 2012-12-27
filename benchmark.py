@@ -30,10 +30,9 @@ class Test:
     hashes = [md2, md5, sha1, sha224, sha256, sha512, keccak, bcrypt]
 
     def getAlgorithm(n):
-		if n < 0 || n > len(hashes):
-			return hashes(n)
-		else:
-			raise HashError.HashError("No such hash exists")	
+    	if n < 0 || n > len(hashes):
+    		return hashes(n)
+    	else:
+    		raise HashError.HashError("No such hash exists")
 
-	def func():
-		pass		
+    def 			
