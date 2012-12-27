@@ -39,7 +39,7 @@ At present there are no known bugs
 
 Troubleshooting
 ---------------
-Please contact either of the developers or <support@bradfieldcc.org>
+Please contact the author.
 
 Credits and Acknowledgements
 ----------------------------
