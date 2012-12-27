@@ -14,15 +14,7 @@ __status__ = "Production"
 import hashlib
 from time import clock, time
 import Controllers.md2_hash
-import Controllers.Keccak_hash
-
-class HashError(object):
-    """Class of error used in the Keccak implementation
-    Use: raise HashError.HashError("Text to be displayed")"""
-    def __init__(self, value):
-        self.value = value
-    def __str__(self):
-        return repr(self.value)
+# import Controllers.Keccak_hash
 
 class Test:
     """Class that contains all the relevant methods to complete the
@@ -36,11 +28,10 @@ class Test:
     # 	else:
     # 		raise HashError.HashError("No such hash exists")
 
-    def setup():
-    	with open('results/all', r) as a: 
-	    	a.write("*********************************************")
-	    	a.write("|  Hash  |  Time to complete all |  Average |")
-	    	a.write("*********************************************")	
+    def setup(): 
+    	a.write("*********************************************")
+    	a.write("|  Hash  |  Time to complete all |  Average |")
+    	a.write("*********************************************")	
     	
     def md2():
     	start = time()
@@ -51,23 +42,22 @@ class Test:
         		f.close
         		elapsed = (clock() - start)
         		average = (elapsed / 285886)
-        	w.close	
         a.write("|  md2   | elapsed | average |")
 
-    def md5():    
-        start = time()	
-		with open('/usr/share/dict/words', 'r') as f:
+    def md5():
+    	start = time()
+    	with open('/usr/share/dict/words', 'r') as f:
     		with open('results/md5', 'r') as w:
         		for word in [line[:-1] for line in f.readlines()]:
         			w.write(word + ", " + hashlib.md5(word).hexdigest())
         		f.close
         		elapsed = (time() - start)
         		average = (elapsed / 285886)
-        	w.close	
         a.write("|  md5   | elapsed | average |")
 
-    def sha1():    
-        with open('/usr/share/dict/words', 'r') as f:
+    def sha1():
+    	start = time()    
+    	with open('/usr/share/dict/words', 'r') as f:
     		with open('results/sha1', 'r') as w:
         		for word in [line[:-1] for line in f.readlines()]:
         			w.write(word + ", " + hashlib.sha1(word).hexdigest())
@@ -75,15 +65,46 @@ class Test:
         		elapsed = (time() - start)
         		average = (elapsed / 285886)
         	w.close	
-        a.write("|  md5   | elapsed | average |")	
+        a.write("|  sha1   | elapsed | average |")	
 
-     def sha224():  
+    def sha224():
+    	start = time()  
         with open('/usr/share/dict/words', 'r') as f:
     		with open('results/sha224', 'r') as w:
         		for word in [line[:-1] for line in f.readlines()]:
-        			w.write(word + ", " + hashlib.sha1(word).hexdigest())
+        			w.write(word + ", " + hashlib.sha224(word).hexdigest())
         		f.closer
         		elapsed = (time() - start)
         		average = (elapsed / 285886)
         	w.close	
-        a.write("|  md5   | elapsed | average |")	 			
+        a.write("|  sha224   | elapsed | average |")
+
+    def sha256():
+    	start = time()  
+        with open('/usr/share/dict/words', 'r') as f:
+    		with open('results/sha224', 'r') as w:
+        		for word in [line[:-1] for line in f.readlines()]:
+        			w.write(word + ", " + hashlib.sha256(word).hexdigest())
+        		f.closer
+        		elapsed = (time() - start)
+        		average = (elapsed / 285886)
+        	w.close	
+        a.write("|  sha256   | elapsed | average |")
+
+    def sha512():
+    	start = time()
+        with open('/usr/share/dict/words', 'r') as f:
+    		with open('results/sha224', 'r') as w:
+        		for word in [line[:-1] for line in f.readlines()]:
+        			w.write(word + ", " + hashlib.sha512(word).hexdigest())
+        		f.closer
+        		elapsed = (time() - start)
+        		average = (elapsed / 285886)
+        	w.close	
+        a.write("|  sha256   | elapsed | average |")   
+
+    def __init__(self):
+    	x = Test()
+
+ 	    
+x.setup()

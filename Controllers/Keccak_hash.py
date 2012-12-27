@@ -1,4 +1,4 @@
-#! /usr/bin/pythonw
+#! /usr/bin/env python
 
 """Method to hash a word using the Keccak hashing algorithm"""
 
