@@ -28,8 +28,8 @@ class Test:
     benchmark testing"""
 
     hashes = [md2, md5, sha1, sha224, sha256, sha512, keccak, bcrypt]
-	
-	def getAlgorithm(n):
+
+    def getAlgorithm(n):
 		if n < 0 || n > len(hashes):
 			return hashes(n)
 		else:
