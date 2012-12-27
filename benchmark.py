@@ -27,7 +27,7 @@ class Test:
     """Class that contains all the relevant methods to complete the
     benchmark testing"""
 
-	hashes = [md2, md5, sha1, sha224, sha256, sha512, keccak, bcrypt]
+    hashes = [md2, md5, sha1, sha224, sha256, sha512, keccak, bcrypt]
 	
 	def getAlgorithm(n):
 		if n < 0 || n > len(hashes):
