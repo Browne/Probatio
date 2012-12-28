@@ -11,18 +11,59 @@ __maintainer__ = "Eliot Brown"
 __email__ = "eliotjbrown@gmail.com"
 __status__ = "Production"
 
-import itertools
+f=open('largedictionary', 'w')
 
-def combinations(iterable, r):
-    pool = tuple(iterable)
-    n = len(pool)
-    for indices in permutations(range(n), r):
-        if sorted(indices) == list(indices):
-            yield tuple(pool[i] for i in indices)
+def xselections(items, n):
+    if n==0: yield []
+    else:
+        for i in xrange(len(items)):
+            for ss in xselections(items, n-1):
+                yield [items[i]]+ss
 
-def output_yield(iter, filename):
-   with open(filename, 'rw') as file:
-       file.wrote("\n".join(iter))            
+numb = range(48,58)
+cap = range(65,91)
+low = range(97,123)
+choice = 0
+while int(choice) not in range(1,8):
+    choice = raw_input('''
+    1) Numbers
+    2) Capital Letters
+    3) Lowercase Letters
+    4) Numbers + Capital Letters
+    5) Numbers + Lowercase Letters
+    6) Numbers + Capital Letters + Lowercase Letters
+    7) Capital Letters + Lowercase Letters
+    : ''') 
 
-if __name__ == '__main__':
-	combinations('abcdefghijklmnopqrstuvwxyz', 8)
+choice = int(choice)
+poss = []
+if choice == 1:
+    poss += numb
+elif choice == 2:
+    poss += cap
+elif choice == 3:
+    poss += low
+elif choice == 4:
+    poss += numb
+    poss += cap
+elif choice == 5:
+    poss += numb
+    poss += low
+elif choice == 6:
+    poss += numb
+    poss += cap
+    poss += low
+elif choice == 7:
+    poss += cap
+    poss += low
+
+bigList = []
+for i in poss:
+    bigList.append(str(chr(i)))
+
+MIN = raw_input("What is the min size of the word? ")
+MIN = int(MIN)
+MAX = raw_input("What is the max size of the word? ")
+MAX = int(MAX)
+for i in range(MIN,MAX+1):
+	for s in xselections(bigList,i): f.write(''.join(s) + '\n')
