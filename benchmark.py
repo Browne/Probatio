@@ -1,6 +1,6 @@
 #!usr/bin/env python
 
-""" Calculate the time taken for each hashing algorithm to hash the dictionary"""
+""" Calculate the time taken for each hashing algorithm to hash the dictionary, plus creates a rainbow table"""
 
 __author__ = "Eliot Brown"
 __copyright__ = "Copyright 2010 - 2013, Eliot Brown"
@@ -30,7 +30,10 @@ def md2():
     		f.close
     		elapsed = (time() - start)
     		average = (elapsed / 285886)
-    	a.write("|  md2   | " + str(elapsed) + "| " + str(average) + "|")
+    		if elapsed == 0:
+    			skip
+    		else:
+    			a.write("|  md2   | " + str(elapsed) + "| " + str(average) + "|\n")
 
 def md5():
 	start = time()
@@ -60,7 +63,7 @@ def sha224():
 		with open('results/sha224', 'r+') as w:
 			for word in [line[:-1] for line in f.readlines()]:
 				w.write(hashlib.sha224(word).hexdigest() + "\n")
-    		f.closer
+    		f.close
     		elapsed = (time() - start)
     		average = (elapsed / 285886)
     	a.write("|  sha224  | " + str(elapsed) + " | " + str(average) + " |\n")
@@ -68,7 +71,7 @@ def sha224():
 def sha256():
 	start = time()
 	with open('/usr/share/dict/words', 'r') as f:
-		with open('results/sha224', 'r+') as w:
+		with open('results/sha256', 'r+') as w:
 			for word in [line[:-1] for line in f.readlines()]:
 				w.write(hashlib.sha256(word).hexdigest() + "\n")
     		f.close
@@ -78,8 +81,8 @@ def sha256():
 
 def sha512():
 	start = time()
-	with open('/usr/share/dict/words', 'r+') as f:
-		with open('results/sha224', 'r+') as w:
+	with open('/usr/share/dict/words', 'r') as f:
+		with open('results/sha512', 'r+') as w:
 			for word in [line[:-1] for line in f.readlines()]:
 				w.write(hashlib.sha512(word).hexdigest() + "\n")
     		f.close
