@@ -28,6 +28,23 @@ This project is licensed under the Mozilla Public License version two (MPLv2). T
 
 A copy of the license is distributed with this project, it is also available online [here](http://www.mozilla.org/MPL/2.0/).
 
+Parts
+-----
+###benchmark.py
+This is the test bed designed to run each test once - as it does the test it puts the hash into a newfile to create a rainbow table for the dictionary.
+
+###multibenchmark.py
+This is the test bed designed to run each test multiple times, unlike benchmark it doesn't create a rainbow table
+
+###Times
+This folder contains all the time results. Individually named files are the results for multibenchmark.py. Main is the results from benchmark.py.
+
+###Dictionary
+This folder contains the standard dictionary and a password permutation calculator. On the localhost it also contains subsequent testing dictionaries, but given their size they are not hosted on github.
+
+###License
+This contains a copy of the license for this project
+
 Authors
 -------
 This project is produced by:
@@ -36,7 +53,8 @@ This project is produced by:
 
 Known Bugs
 ----------
-At present there are no known bugs
+###multibench.py
+The script allows data to be cached meaning subsequent results after the first pass are quicker than they should be. A solution is under investigation
 
 Troubleshooting
 ---------------
