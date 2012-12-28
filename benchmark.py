@@ -13,11 +13,10 @@ __status__ = "Production"
 
 import hashlib
 from time import clock, time
-import Controllers.md2_hash
+from Controllers import md2_hash
 # import Controllers.Keccak_hash
 
 def setup():
-	# with open('results/main', 'r+') as a:
 	a.write("*********************************************\n")
 	a.write("|  Hash  |  Time to complete all |  Average |\n")
 	a.write("*********************************************\n")	
@@ -27,78 +26,73 @@ def md2():
 	with open('/usr/share/dict/words', 'r') as f:
 		with open('results/md2', 'r+') as w:
 			for word in [line[:-1] for line in f.readlines()]:
-				w.write(word + ", " + md2(word))
+				w.write(md2_hash.md2(word) + "\n")
     		f.close
     		elapsed = (time() - start)
     		average = (elapsed / 285886)
-    	a.write("|  md2   | elapsed | average |")
+    	a.write("|  md2   | " + str(elapsed) + "| " + str(average) + "|")
 
 def md5():
 	start = time()
 	with open('/usr/share/dict/words', 'r') as f:
-		with open('results/md5', 'r') as w:
+		with open('results/md5', 'r+') as w:
 			for word in [line[:-1] for line in f.readlines()]:
-				w.write(word + ", " + hashlib.md5(word).hexdigest())
+				w.write(hashlib.md5(word).hexdigest() + "\n")
     		f.close
     		elapsed = (time() - start)
-    		average = (elapsed / 285886)
-    	with open('results/main', 'r') as a:	
-    		a.write("|  md5   | elapsed | average |")
+    		average = (elapsed / 285886)	
+    	a.write("|  md5   | " + str(elapsed) + " | " + str(average) + " |\n")
 
 def sha1():
 	start = time()    
 	with open('/usr/share/dict/words', 'r') as f:
-		with open('results/sha1', 'r') as w:
+		with open('results/sha1', 'r+') as w:
 			for word in [line[:-1] for line in f.readlines()]:
-				w.write(word + ", " + hashlib.sha1(word).hexdigest())
-    		f.closer
+				w.write(hashlib.sha1(word).hexdigest() + "\n")
+    		f.close
     		elapsed = (time() - start)
     		average = (elapsed / 285886)
-    	with open('results/main', 'r') as a:	
-    		a.write("|  sha1   | elapsed | average |")	
+    	a.write("|  sha1   | " + str(elapsed) + " | " + str(average) + " |\n")	
 
 def sha224():
 	start = time()
 	with open('/usr/share/dict/words', 'r') as f:
-		with open('results/sha224', 'r') as w:
+		with open('results/sha224', 'r+') as w:
 			for word in [line[:-1] for line in f.readlines()]:
-				w.write(word + ", " + hashlib.sha224(word).hexdigest())
+				w.write(hashlib.sha224(word).hexdigest() + "\n")
     		f.closer
     		elapsed = (time() - start)
     		average = (elapsed / 285886)
-    	with open('results/main', 'r') as a:
-    		a.write("|  sha224   | elapsed | average |")
+    	a.write("|  sha224  | " + str(elapsed) + " | " + str(average) + " |\n")
 
 def sha256():
 	start = time()
 	with open('/usr/share/dict/words', 'r') as f:
-		with open('results/sha224', 'r') as w:
+		with open('results/sha224', 'r+') as w:
 			for word in [line[:-1] for line in f.readlines()]:
-				w.write(word + ", " + hashlib.sha256(word).hexdigest())
-    		f.closer
+				w.write(hashlib.sha256(word).hexdigest() + "\n")
+    		f.close
     		elapsed = (time() - start)
-    		average = (elapsed / 285886)
-    	with open('results/main', 'r') as a:	
-    		a.write("|  sha256   | elapsed | average |")
+    		average = (elapsed / 285886)	
+    	a.write("|  sha256   | " + str(elapsed) + " | " + str(average) + " |\n")
 
 def sha512():
 	start = time()
-	with open('/usr/share/dict/words', 'r') as f:
-		with open('results/sha224', 'r') as w:
+	with open('/usr/share/dict/words', 'r+') as f:
+		with open('results/sha224', 'r+') as w:
 			for word in [line[:-1] for line in f.readlines()]:
-				w.write(word + ", " + hashlib.sha512(word).hexdigest())
-    		f.closer
+				w.write(hashlib.sha512(word).hexdigest() + "\n")
+    		f.close
     		elapsed = (time() - start)
-    		average = (elapsed / 285886)
-    	with open('results/main', 'r') as a:	
-    		a.write("|  sha256   | elapsed | average |")   
-
-    # def __init__(self):
-    # 	x = Test()
-    # 	with open('results/main', 'r') as a:
-    # 		setup()
+    		average = (elapsed / 285886)	
+    	a.write("|  sha512   | " + str(elapsed) + " | " + str(average) + " |\n")  
 
 if __name__ == '__main__':
-	with open('results/main', 'r+') as a:
+	with open('times', 'r+') as a:
 		setup()
 		md2()
+		md5()
+		sha1()
+		sha224()
+		sha256()
+		sha512()
