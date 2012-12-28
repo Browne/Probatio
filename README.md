@@ -36,6 +36,9 @@ This is the test bed designed to run each test once - as it does the test it put
 ###multibenchmark.py
 This is the test bed designed to run each test multiple times, unlike benchmark it doesn't create a rainbow table
 
+###Controllers
+This folder contains some of the hashing algorithms used. Such as the md2 and keccak algorithms.
+
 ###Times
 This folder contains all the time results. Individually named files are the results for multibenchmark.py. Main is the results from benchmark.py.
 
